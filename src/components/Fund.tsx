@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../styles/instrument.scss'
+import '../styles/fund.scss'
 import { VictoryChart, VictoryLine, VictoryTheme } from 'victory';
 import axios from 'axios';
 import { serverUrl } from '../utils/config';
 
-export default class Instrument extends Component {
+export default class Fund extends Component {
 
     constructor(props: {}) {
         super(props)
@@ -35,9 +35,9 @@ export default class Instrument extends Component {
 
     render() {
         return (
-            <div className="instrument">
-                <h4>{this.props.data.name}</h4>
-                <p>Value: {this.props.data.value}</p>
+            <div className="fund">
+                <h4>{this.props.data.name.en}</h4>
+                <p>Risk Class: {this.props.data.riskClass}</p>
                 <p>Isin Code: {this.props.data.isinCode}</p>
                 {this.state.chartData && (
                     <div className="chart-container">
