@@ -1,5 +1,10 @@
 # Ultrahack 2018 Sprint 2: Button Finance Frontend
 
+## Setup
+```shell
+npm install
+```
+
 ## Using development server
 
 ```shell
