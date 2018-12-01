@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/instrument.scss'
-import { VictoryLine } from 'victory';
+import { VictoryChart, VictoryLine, VictoryTheme } from 'victory';
 import axios from 'axios';
 import { serverUrl } from '../utils/config';
 
@@ -15,10 +15,15 @@ export default class Instrument extends Component {
 
     async fetchChartData() {
         try {
-            const response = await axios.get(serverUrl + '/funds/' + 'FI4000029509');
-            console.log(response.data)
+            const response = await axios.get(serverUrl + '/funds/' + this.props.data.isinCode);
+            const data = response.data.payload
+            for (let i in data) {
+                data[i].x = data[i].date,
+                data[i].y = parseInt(data[i].value)
+            }
+            console.log(data)
             this.setState({
-                chartData: response.data.payload,
+                chartData: data
             });
         } catch (error) {
             console.log(error)
@@ -37,7 +42,17 @@ export default class Instrument extends Component {
                 <p>Isin Code: {this.props.data.isinCode}</p>
                 {this.state.chartData && (
                     <div className="chart-container">
-                        <VictoryLine></VictoryLine>
+                        <VictoryChart
+                            theme={VictoryTheme.material}
+                        >
+                            <VictoryLine
+                                style={{
+                                    data: { stroke: "#c43a31" },
+                                    parent: { border: "1px solid #ccc" }
+                                }}
+                                data={this.state.chartData}>
+                            </VictoryLine>
+                        </VictoryChart>
                     </div>
                 )}
             </div>
