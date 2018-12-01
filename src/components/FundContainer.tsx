@@ -11,7 +11,10 @@ export default class FundContainer extends Component {
         this.state = {
             funds: null
         }
-        this.fetchFunds()
+    }
+
+    componentDidMount() {
+        this.fetchFunds();
     }
 
     async fetchFunds() {
@@ -26,27 +29,24 @@ export default class FundContainer extends Component {
     }
 
     render() {
-        let view;
-        if (!this.state.funds) {
-            view = (
-                <img 
-                className="loading-image"
-                src="../src/assets/loading.svg"></img>
-            )
-        } else {
-            view = (
-                <div className="fund-container">
-                    {Object.keys(this.state.funds).map((item, i) => {
-                        return (<Fund
-                            key={i}
-                            data={this.state.funds[item]}
-                        />);
-                    })}
-                </div>
-            )
-        }
         return (
-            view
+            <div>
+                {this.state.funds ? (
+                    <div className="fund-container">
+                        {Object.keys(this.state.funds).map((item, i) => {
+                            return (<Fund
+                                key={i}
+                                data={this.state.funds[item]}
+                            />);
+                        })}
+                    </div>
+                ) : (
+                        <img
+                            className="loading-image"
+                            src="../src/assets/loading.svg"></img>
+                    )
+                }
+            </div>
         )
     }
 }

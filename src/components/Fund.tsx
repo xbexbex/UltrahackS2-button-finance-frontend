@@ -33,7 +33,6 @@ export default class Fund extends Component {
                 data[i].x = data[i].date,
                     data[i].y = parseInt(data[i].value)
             }
-            console.log(data)
             this.setState({
                 chartData: data
             });

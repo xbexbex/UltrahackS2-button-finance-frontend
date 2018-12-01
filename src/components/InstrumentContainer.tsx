@@ -11,6 +11,9 @@ export default class InstrumentContainer extends Component {
         this.state = {
             instruments: null
         }
+    }
+
+    componentDidMount() {
         this.fetchInstruments();
     }
 
@@ -26,23 +29,22 @@ export default class InstrumentContainer extends Component {
     }
 
     render() {
-        let view;
-        if (this.state.instruments) {
-            view = (
-                <div className="instrument-container">
-                    {Object.keys(this.state.instruments).map((item, i) => {
-                        return (<Instrument
-                            key={i}
-                            data={this.state.instruments[item]}
-                        />);
-                    })}
-                </div>
-            )
-        } else {
-            view = (<p></p>)
-        }
         return (
-            view
+            <div>
+                {this.state.instruments ? (
+                    <div className="instrument-container">
+                        {Object.keys(this.state.instruments).map((item, i) => {
+                            return (<Instrument
+                                key={i}
+                                data={this.state.instruments[item]}
+                            />);
+                        })}
+                    </div>
+                ) : (
+                    <div></div>
+                    )
+                }
+            </div>
         )
     }
 }
