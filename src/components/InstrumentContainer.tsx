@@ -18,7 +18,7 @@ export default class InstrumentContainer extends Component {
         try {
             const response = await axios.get(serverUrl + '/inst');
             this.setState({
-                instruments: response.data.instruments,
+                instruments: response.data,
             });
         } catch (error) {
             console.log(error)

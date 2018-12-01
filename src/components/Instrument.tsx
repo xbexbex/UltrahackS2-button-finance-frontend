@@ -38,12 +38,10 @@ export default class Instrument extends Component {
             <div className="instrument">
                 <h4>{this.props.data.name}</h4>
                 <p>Value: {this.props.data.value}</p>
-                <p>Isin Code: {this.props.data.isinCode}</p>
+                <p>Environmental Index: {this.props.data.envIndex}</p>
                 {this.state.chartData && (
                     <div className="chart-container">
-                        <VictoryChart
-                            theme={VictoryTheme.material}
-                        >
+                        <VictoryChart>
                             <VictoryLine
                                 style={{
                                     data: { stroke: "#c43a31" },

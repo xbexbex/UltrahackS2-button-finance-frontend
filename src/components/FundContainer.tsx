@@ -18,7 +18,7 @@ export default class FundContainer extends Component {
         try {
             const response = await axios.get(serverUrl + '/funds');
             this.setState({
-                funds: response.data.payload,
+                funds: response.data,
             });
         } catch (error) {
             console.log(error)

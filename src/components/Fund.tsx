@@ -52,12 +52,12 @@ export default class Fund extends Component {
             <div className="fund">
                 <h4>{this.props.data.name.en}</h4>
                 <p>Risk Class: {this.props.data.riskClass}</p>
-                <p>Isin Code: {this.props.data.isinCode}</p>
+                <p>Environmental Index: {this.props.data.envIndex < 0 ? "-" : "+"}
+                    {this.props.data.envIndex}
+                </p>
                 {this.state.chartData ? (
                     <div className="chart-container">
-                        <VictoryChart
-                            theme={VictoryTheme.material}
-                        >
+                        <VictoryChart>
                             <VictoryLine
                                 style={{
                                     data: { stroke: "#c43a31" },
