@@ -33,6 +33,7 @@ export default class Fund extends Component {
                 data[i].x = data[i].date,
                     data[i].y = parseInt(data[i].value)
             }
+            console.log(data)
             this.setState({
                 chartData: data
             });
@@ -52,7 +53,7 @@ export default class Fund extends Component {
                 <h4>{this.props.data.name.en}</h4>
                 <p>Risk Class: {this.props.data.riskClass}</p>
                 <p>Isin Code: {this.props.data.isinCode}</p>
-                {this.state.chartData && (
+                {this.state.chartData ? (
                     <div className="chart-container">
                         <VictoryChart
                             theme={VictoryTheme.material}
@@ -66,7 +67,11 @@ export default class Fund extends Component {
                             </VictoryLine>
                         </VictoryChart>
                     </div>
-                )}
+                ) : (
+                        <img
+                            className="loading-image"
+                            src="../src/assets/loading.svg"></img>
+                    )}
             </div>
         )
     }

@@ -29,7 +29,9 @@ export default class FundContainer extends Component {
         let view;
         if (!this.state.funds) {
             view = (
-                <p>Loading</p>
+                <img 
+                className="loading-image"
+                src="../src/assets/loading.svg"></img>
             )
         } else {
             view = (

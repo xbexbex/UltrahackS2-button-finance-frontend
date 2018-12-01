@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import FundContainer from './FundContainer';
 import InstrumentContainer from './InstrumentContainer';
-import '../styles/App.scss';
-import Instrument from './Instrument';
+import '../styles/App.scss'
 
 export default class App extends Component {
 

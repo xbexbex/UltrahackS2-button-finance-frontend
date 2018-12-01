@@ -27,11 +27,7 @@ export default class InstrumentContainer extends Component {
 
     render() {
         let view;
-        if (!this.state.instruments) {
-            view = (
-                <p>Loading</p>
-            )
-        } else {
+        if (this.state.instruments) {
             view = (
                 <div className="instrument-container">
                     {Object.keys(this.state.instruments).map((item, i) => {
@@ -42,6 +38,8 @@ export default class InstrumentContainer extends Component {
                     })}
                 </div>
             )
+        } else {
+            view = (<p></p>)
         }
         return (
             view
