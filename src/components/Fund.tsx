@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/fund.scss'
+import '../styles/Fund.scss'
 import { VictoryChart, VictoryLine, VictoryTheme } from 'victory';
 import axios from 'axios';
 import { serverUrl } from '../utils/config';
@@ -52,7 +52,7 @@ export default class Fund extends Component {
             <div className="fund">
                 <h4>{this.props.data.name.en}</h4>
                 <p>Risk Class: {this.props.data.riskClass}</p>
-                <p>Environmental Index: {this.props.data.envIndex < 0 ? "-" : "+"}
+                <p>Environmental Index: {this.props.data.envIndex >= 0 && "+"}
                     {this.props.data.envIndex}
                 </p>
                 {this.state.chartData ? (
