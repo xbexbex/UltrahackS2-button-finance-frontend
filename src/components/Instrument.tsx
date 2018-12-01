@@ -15,7 +15,7 @@ export default class Instrument extends Component {
 
     async fetchChartData() {
         try {
-            const response = await axios.get(serverUrl + '/funds/' + this.props.data.isinCode);
+            const response = await axios.get(serverUrl + '/charts/' + this.props.data.isinCode);
             const data = response.data.payload
             for (let i in data) {
                 data[i].x = data[i].date,

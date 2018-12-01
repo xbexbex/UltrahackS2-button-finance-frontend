@@ -6,6 +6,8 @@ import { serverUrl } from '../utils/config';
 
 export default class Fund extends Component {
 
+    private detailedData = {};
+
     constructor(props: {}) {
         super(props)
         this.state = {
@@ -13,13 +15,23 @@ export default class Fund extends Component {
         }
     }
 
+    async fetchFundData() {
+        try {
+            const response = await axios.get(serverUrl + '/funds/' + this.props.data.id);
+            this.detailedData = response.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async fetchChartData() {
         try {
-            const response = await axios.get(serverUrl + '/funds/' + this.props.data.isinCode);
+            const response = await axios.get(serverUrl + '/charts/'
+                + this.detailedData.shares[0].isin);
             const data = response.data.payload
             for (let i in data) {
                 data[i].x = data[i].date,
-                data[i].y = parseInt(data[i].value)
+                    data[i].y = parseInt(data[i].value)
             }
             this.setState({
                 chartData: data
@@ -29,8 +41,9 @@ export default class Fund extends Component {
         }
     }
 
-    componentDidMount() {
-        this.fetchChartData();
+    async componentDidMount() {
+        await this.fetchFundData();
+        this.fetchChartData()
     }
 
     render() {
