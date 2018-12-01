@@ -35,6 +35,7 @@
     "@types/react-dom": "16.0.9",
     "axios": "^0.18.0",
     "react": "16.6.3",
-    "react-dom": "16.6.3"
+    "react-dom": "16.6.3",
+    "victory": "^31.0.1"
   }
 }
